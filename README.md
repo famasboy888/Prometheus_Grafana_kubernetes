@@ -54,9 +54,53 @@ region = YOUR_REGION
 
 Encode file `cloud.conf` to Base64
 ```bash
+cat cloud.conf | base64 |tr -d '\n'
 
+Output:
+W0dsb2JhbF0Kddfgkjhdkfjhg1pbgpwYXNzd29yZCA9IGV3UkRManJuWWJYZlBjNkxhV1RubzFyc1FxRlZzdFZuekFobFRodWYKZG9tYWluLW5hbWUgPSBEZWZhdWx0CmF1dGgtdXJsID0gaHR0cDovLzE5Mi4xNjguMi44OD.....vbk9uZQo=
 ```
 
+Copy the contents of the encoded OpenStack RC configuration and add the string into the data field of the `csi-secret-cinderplugin.yaml` file
+```bash
+# This YAML file contains secret objects,
+# which are necessary to run csi cinder plugin.
+
+kind: Secret
+apiVersion: v1
+metadata:
+  name: cloud-config
+  namespace: kube-system
+data:
+  cloud.conf: W0dsb2JhbF0KdXNlcm5hbWUgP        <=== Change this!
+```
+
+Kubectl apply everything in the directory
+```bash
+kubectl apply -f .
+```
+Verify
+```bash
+kubectl get pods -n kube-system
+
+Output:
+NAME                                           READY   STATUS    RESTARTS      AGE
+coredns-85b955d87b-585nd                       1/1     Running   1 (43m ago)   46m
+coredns-85b955d87b-w4bc2                       1/1     Running   1 (43m ago)   46m
+csi-cinder-controllerplugin-646bdf9885-fvfgz   6/6     Running   1 (46s ago)   107s              <=== This
+csi-cinder-nodeplugin-hptwq                    3/3     Running   0             107s              <=== This
+csi-cinder-nodeplugin-jqhrg                    3/3     Running   1 (67s ago)   107s              <=== This
+csi-cinder-nodeplugin-z67px                    3/3     Running   1 (68s ago)   107s              <=== This
+kube-apiserver-control-1                       1/1     Running   0             19m
+kube-controller-manager-control-1              1/1     Running   2 (19m ago)   19m
+kube-flannel-96wjz                             1/1     Running   0             18m
+kube-flannel-gkzwm                             1/1     Running   1 (43m ago)   45m
+kube-flannel-mkctv                             1/1     Running   1 (43m ago)   45m
+kube-proxy-8d7ct                               1/1     Running   0             43m
+kube-proxy-dtlw4                               1/1     Running   1 (43m ago)   45m
+kube-proxy-vmbfb                               1/1     Running   0             18m
+kube-scheduler-control-1                       1/1     Running   2 (19m ago)   19m
+```
+<hr>
 </details>
 
 Add Repo
