@@ -189,3 +189,20 @@ Output:
 ...Successfully got an update from the "grafana" chart repository
 Update Complete. ⎈Happy Helming!⎈
 ```
+
+Helm Install Grafana in the same name space `--namespace monitoring`
+```bash
+helm install grafana grafana/grafana --namespace monitoring
+```
+
+If installation was successful, you will get the following
+
+Output:
+```bash
+...
+3. Login with the password from step 1 and the username: admin
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the Grafana pod is terminated.                            #####
+#################################################################################
+```
