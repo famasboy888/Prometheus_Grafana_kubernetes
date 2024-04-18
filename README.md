@@ -23,6 +23,7 @@ version.BuildInfo{Version:"v3.14.2", GitCommit:"c309b6f0ff63856811846ce18f3bdc93
 
 ## 2) Install Prometheus using Helm
 
+### 2.1) 
 Commands were taken from here: [Prometheus ArtifactHub](https://artifacthub.io/packages/helm/prometheus-community/prometheus)
 
 
@@ -134,5 +135,35 @@ For more information on running Prometheus, visit:
 https://prometheus.io/
 ```
 
-### 2.1) 
+### 2.2) Let's expose the service `prometheus-server` to a NodePort Service so we can access it in the web
+Check all SVC
+```bash
+kubectl get svc -n monitoring
+
+Output:
+service/kubernetes                            ClusterIP   10.96.0.1      <none>        443/TCP        23m
+service/prometheus-alertmanager               ClusterIP   10.111.162.3   <none>        9093/TCP       9m49s
+service/prometheus-alertmanager-headless      ClusterIP   None           <none>        9093/TCP       9m49s
+service/prometheus-kube-state-metrics         ClusterIP   10.103.2.1     <none>        8080/TCP       9m49s
+service/prometheus-prometheus-node-exporter   ClusterIP   10.97.16.97    <none>        9100/TCP       9m49s
+service/prometheus-prometheus-pushgateway     ClusterIP   10.102.82.45   <none>        9091/TCP       9m49s
+service/prometheus-server                     ClusterIP   10.96.2.25     <none>        80/TCP         9m49s
+```
+
+We expose the target port `9090`
+
+```bash
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+```
+We now have a newly added service
+
+```bash
+kubectl get svc -n monitoring
+
+...
+...
+...
+service/prometheus-server                     ClusterIP   10.96.2.25     <none>        80/TCP         9m49s
+service/prometheus-server-ext                 NodePort    10.99.0.210    <none>        80:30136/TCP   3s                  <== Verify this
+```
 
