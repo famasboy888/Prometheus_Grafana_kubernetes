@@ -233,6 +233,7 @@ We enter http://<Node IP>:<PORT>. For me it is  `http://192.168.2.242:31860/`
 </p>
 
 `Username: admin`
+
 Get the Password:
 ```bash
 kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
