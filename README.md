@@ -42,4 +42,16 @@ Helm Install. We will create them in a different namespace for easy management. 
 helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace
 ```
 
+If installation was successful, you will get the following
+
+Output:
+```bash
+...
+Get the PushGateway URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace monitoring -l "app=prometheus-pushgateway,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace monitoring port-forward $POD_NAME 9091
+
+For more information on running Prometheus, visit:
+https://prometheus.io/
+```
 
