@@ -175,3 +175,17 @@ We enter http://<Node IP>:<PORT>. For me it is  `http://192.168.2.242:30136/`
 <p align="left">
   <img width="80%" height="80%" src="https://github.com/famasboy888/Prometheus_Grafana_kubernetes/assets/23441168/3004d59f-4852-42ed-8842-aadfcdc718eb">
 </p>
+
+## 3) Install Grafana using Helm
+
+### 3.1) Add Grafana Repo
+
+```bash
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+```
+Output:
+```bash
+...Successfully got an update from the "grafana" chart repository
+Update Complete. ⎈Happy Helming!⎈
+```
