@@ -31,8 +31,29 @@ Commands were taken from here: [Prometheus ArtifactHub](https://artifacthub.io/p
  
 _This part is optional. I needed to do this because I am using OpenStack to deploy my Kubernetes Nodes._
 
+Git clone repository for `cinder-csi-plugin`. Follow the guide here [cinder-csi-plugin](https://github.com/kubernetes/cloud-provider-openstack/blob/master/docs/cinder-csi-plugin/using-cinder-csi-plugin.md)
 ```bash
+git clone https://github.com/kubernetes/cloud-provider-openstack.git
+```
 
+Change to directory:
+```bash
+cd /cloud-provider-openstack/manifests/cinder-csi-plugin
+```
+
+Create file `cloud.conf`
+```bash
+[Global]
+username = YOUR_USER
+password = YOUR_PASSWORD
+domain-name = default
+auth-url = https://YOUR_DU_URL/keystone/v3
+tenant-id = YOUR_TENANT_ID
+region = YOUR_REGION
+```
+
+Encode file `cloud.conf` to Base64
+```bash
 
 ```
 
