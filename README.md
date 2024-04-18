@@ -156,7 +156,7 @@ service/prometheus-server                     ClusterIP   10.96.2.25     <none> 
 We expose the target port `9090`
 
 ```bash
-kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext -n monitoring
 ```
 We now have a newly added service
 
@@ -205,4 +205,35 @@ Output:
 ######   WARNING: Persistence is disabled!!! You will lose your data when   #####
 ######            the Grafana pod is terminated.                            #####
 #################################################################################
+```
+
+### 3.2) We will do the same thing. Expose the port to a type NodePort and access via web browser
+
+We expose the target port `3000`
+
+```bash
+kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext -n monitoring
+```
+We now have a newly added `grafana-ext` service
+
+```bash
+kubectl get svc -n monitoring
+
+...
+...
+...
+service/grafana                               ClusterIP   10.98.232.32    <none>        80/TCP         12m
+service/grafana-ext                           NodePort    10.105.68.151   <none>        80:31860/TCP   19s                         <== Verify this
+```
+
+We enter http://<Node IP>:<PORT>. For me it is  `http://192.168.2.242:31860/`
+
+<p align="left">
+  <img width="80%" height="80%" src="https://github.com/famasboy888/Prometheus_Grafana_kubernetes/assets/23441168/03c0e3b4-c1a1-4f25-b879-c5d0f9f7ff18">
+</p>
+
+`Username: admin`
+Get the Password:
+```bash
+kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
