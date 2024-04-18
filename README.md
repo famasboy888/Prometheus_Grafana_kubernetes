@@ -1,5 +1,6 @@
 # Prometheus + Grafana Monitoring Tools on Kubernetes
 ## 1) Install Heml
+We will use Helm because it will make things easier.
 
 ```bash
 sudo apt-get gpg curl -y
@@ -19,3 +20,7 @@ Output:
 ```bash
 version.BuildInfo{Version:"v3.14.2", GitCommit:"c309b6f0ff63856811846ce18f3bdc93d2b4d54b", GitTreeState:"clean", GoVersion:"go1.21.7"}
 ```
+
+## 2) Install Prometheus using Helm
+
+[Prometheus ArtifactHub](https://artifacthub.io/packages/helm/prometheus-community/prometheus)
