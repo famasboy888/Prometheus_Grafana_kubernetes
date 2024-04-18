@@ -1,7 +1,9 @@
 # Prometheus + Grafana Monitoring Tools on Kubernetes
+
 <p align="center">
   <img width="80%" height="80%" src="https://github.com/famasboy888/Prometheus_Grafana_kubernetes/assets/23441168/8c7ab6d7-6fb7-4d7d-9b81-5319553545df">
 </p>
+
 ## 1) Install Heml
 We will use Helm because it will make things easier.
 
