@@ -167,3 +167,8 @@ service/prometheus-server                     ClusterIP   10.96.2.25     <none> 
 service/prometheus-server-ext                 NodePort    10.99.0.210    <none>        80:30136/TCP   3s                  <== Verify this
 ```
 
+We enter http://<Node IP>:<PORT>. For me it is  `http://192.168.2.242:30136/`
+
+<p align="left">
+  <img width="80%" height="80%" src="https://github.com/famasboy888/Prometheus_Grafana_kubernetes/assets/23441168/3004d59f-4852-42ed-8842-aadfcdc718eb">
+</p>
