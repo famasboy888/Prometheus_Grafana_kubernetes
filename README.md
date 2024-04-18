@@ -25,6 +25,7 @@ version.BuildInfo{Version:"v3.14.2", GitCommit:"c309b6f0ff63856811846ce18f3bdc93
 
 Commands were taken from here: [Prometheus ArtifactHub](https://artifacthub.io/packages/helm/prometheus-community/prometheus)
 
+Add Repo
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
@@ -35,4 +36,10 @@ Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "prometheus-community" chart repository
 Update Complete. ⎈Happy Helming!⎈
 ```
+
+Helm Install. We will create them in a different namespace for easy management. `--namespace monitoring --create-namespace`
+```bash
+helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace
+```
+
 
