@@ -1,5 +1,7 @@
 # Prometheus + Grafana Monitoring Tools on Kubernetes
 
+I deployed this in Talos OS on top of my OpenStack
+
 <p align="center">
   <img width="80%" height="80%" src="https://github.com/famasboy888/Prometheus_Grafana_kubernetes/assets/23441168/8c7ab6d7-6fb7-4d7d-9b81-5319553545df">
 </p>
