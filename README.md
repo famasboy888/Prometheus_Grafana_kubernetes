@@ -25,6 +25,18 @@ version.BuildInfo{Version:"v3.14.2", GitCommit:"c309b6f0ff63856811846ce18f3bdc93
 
 Commands were taken from here: [Prometheus ArtifactHub](https://artifacthub.io/packages/helm/prometheus-community/prometheus)
 
+This part is optional. I needed to do this because I am using OpenStack to deploy my Kubernetes Nodes.
+<details>
+  <summary><i>Cinder CSI Plugin</i></summary>
+
+
+```bash
+
+
+```
+
+</details>
+
 Add Repo
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -54,4 +66,6 @@ Get the PushGateway URL by running these commands in the same shell:
 For more information on running Prometheus, visit:
 https://prometheus.io/
 ```
+
+### 2.1) 
 
