@@ -100,7 +100,8 @@ kube-proxy-dtlw4                               1/1     Running   1 (43m ago)   4
 kube-proxy-vmbfb                               1/1     Running   0             18m
 kube-scheduler-control-1                       1/1     Running   2 (19m ago)   19m
 ```
-<hr>
+<hr/>
+<hr/>
 </details>
 
 Add Repo
