@@ -239,7 +239,7 @@ We enter http://\<Node IP\>:\<PORT\>. For me it is  `http://192.168.2.242:31860/
   <img width="80%" height="80%" src="https://github.com/famasboy888/Prometheus_Grafana_kubernetes/assets/23441168/03c0e3b4-c1a1-4f25-b879-c5d0f9f7ff18">
 </p>
 
-`Username: admin`
+`Username: admin` 
 
 Get the Password:
 ```bash
